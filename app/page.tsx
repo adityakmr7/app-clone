@@ -1,10 +1,12 @@
+"use client";
 import { Room } from "./Room";
-import { CollaborativeApp } from "./CollaborativeApp";
+import Live from "@/components/Live";
 
 export default function Page() {
   return (
-      <Room>
-        <CollaborativeApp />
-      </Room>
+    <div>
+      <h1 className={"font-5xl"}>hello world</h1>
+      <Live />
+    </div>
   );
 }
