@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {Room} from "@/app/Room";
+import { Room } from "@/app/Room";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Room>
-
-      {children}
-
-      </Room>
+        <Room>
+          <TooltipProvider>{children}</TooltipProvider>
+        </Room>
       </body>
     </html>
   );

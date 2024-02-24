@@ -4,7 +4,10 @@ import { useMyPresence, useOthers } from "@/liveblocks.config";
 import CursorChat from "@/components/cursor/CursorChat";
 import { CursorMode } from "@/types/type";
 
-const Live = () => {
+type Props = {
+  canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
+};
+const Live = ({ canvasRef }: Props) => {
   const others = useOthers();
   const [{ cursor }, updateMyPresence] = useMyPresence() as any;
   const [cursorState, setCursorState] = useState({
@@ -53,6 +56,7 @@ const Live = () => {
   }, [updateMyPresence]);
   return (
     <div
+      id={"canvas"}
       className={
         "h-[100vh] w-full flex justify-center text-center items-center border-5 border-green-500"
       }
@@ -60,6 +64,7 @@ const Live = () => {
       onPointerLeave={handlePointerLeave}
       onPointerDown={handlePointerDown}
     >
+      <canvas ref={canvasRef} />
       {cursor && (
         <CursorChat
           cursor={cursor}
